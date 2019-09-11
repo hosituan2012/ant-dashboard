@@ -1,0 +1,176 @@
+<page [title]="'User Login'" [region]="region" mode="fill">
+  <div class="main-login-container">
+    <div class="login-container">
+        <div class="login-form-box">
+          <p class="logo-login-form">Daily <span class="mm-logo">MM<span class="logo-special-charac"> )</span></span></p>
+          <form nz-form [formGroup]="validateLoginForm" class="login-form" (ngSubmit)="submitForm()" *ngIf="isLogin && !isRegister">
+            <span>Username:</span>
+            <nz-form-item>
+              <nz-form-control>
+                  <nz-input-group [nzSuffix]="usernameTemplate">
+                    <input type="text" nz-input formControlName="userName"/>
+                  </nz-input-group>
+              </nz-form-control>
+              <nz-form-explain *ngIf="validateLoginForm.get('userName')?.dirty && validateLoginForm.get('userName')?.errors">
+                  <span class="login-form-explain">* This filed is required</span>
+              </nz-form-explain>
+            </nz-form-item>
+            <span>Password:</span>
+            <nz-form-item>
+              <nz-form-control>
+                <!-- <nz-input-group nzPrefixIcon="lock">
+                  <input type="password" nz-input formControlName="password" placeholder="Password" />
+                </nz-input-group> -->
+                <nz-input-group [nzSuffix]="passwordTemplate">
+                  <input
+                    [type]="passwordVisible ? 'text' : 'password'"
+                    nz-input
+                    formControlName="password"
+                    (input)="onChangePassword()"
+                  />
+                </nz-input-group>
+              </nz-form-control>
+              <nz-form-explain *ngIf="validateLoginForm.get('password')?.dirty && validateLoginForm.get('password')?.errors">
+                  <span class="login-form-explain">* This filed is required</span>
+              </nz-form-explain>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control>
+                <button nz-button class="login-form-button" [nzType]="'primary'" [nzLoading]="submiting">Sign In</button>
+              </nz-form-control>
+            </nz-form-item>
+          </form>
+          <!-- Password Recovery Form -->
+          <form nz-form [formGroup]="validateEmailForm" class="login-form" (ngSubmit)="submitForm()" *ngIf="!isLogin && !isRegister">
+            <span>Your email for recovery:</span>
+            <nz-form-item>
+              <nz-form-control>
+                  <nz-input-group [nzSuffix]="emailTemplate">
+                    <input type="text" nz-input formControlName="email" />
+                  </nz-input-group>
+              </nz-form-control>
+              <nz-form-explain *ngIf="(validateEmailForm.get('email')?.dirty || validateEmailForm.get('email').touched) && validateEmailForm.get('email')?.errors">
+                  <span class="login-form-explain" [hidden]="validateEmailForm.get('email')?.errors?.pattern">Please input your Email!</span>
+                  <span class="login-form-explain" [hidden]="!validateEmailForm.get('email')?.errors?.pattern">Invalid email!</span>
+              </nz-form-explain>
+            </nz-form-item>
+            <nz-form-control>
+              <button type="submit" nz-button class="login-form-button" [nzType]="'primary'">Recovery Password</button>
+            </nz-form-control>
+          </form>
+          <!-- Register Form -->
+          <form nz-form [formGroup]="validateRegisterForm" class="login-form" (ngSubmit)="submitForm()" *ngIf="isRegister">
+            <div class="register-form-title">
+              <span>Register a new membership</span>
+            </div>
+            <nz-form-item>
+              <nz-form-control>
+                  <nz-input-group [nzSuffix]="usernameTemplate">
+                    <input type="text" nz-input formControlName="userName" placeholder="* Fullname: Donald Trump"/>
+                  </nz-input-group>
+              </nz-form-control>
+              <nz-form-explain *ngIf="validateRegisterForm.get('userName')?.dirty && validateRegisterForm.get('userName')?.errors">
+                  <span class="login-form-explain">* This filed is required</span>
+              </nz-form-explain>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control>
+                  <nz-input-group [nzSuffix]="emailTemplate">
+                    <input type="text" nz-input formControlName="email" placeholder="* Email: donaldtrump@gmail.com"/>
+                  </nz-input-group>
+              </nz-form-control>
+              <nz-form-explain *ngIf="(validateRegisterForm.get('email')?.dirty || validateRegisterForm.get('email').touched) && validateRegisterForm.get('email')?.errors">
+                  <span class="login-form-explain" [hidden]="validateRegisterForm.get('email')?.errors?.pattern">* This filed is required</span>
+                  <span class="login-form-explain" [hidden]="!validateRegisterForm.get('email')?.errors?.pattern">Invalid email!</span>
+              </nz-form-explain>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control>
+                <nz-input-group [nzSuffix]="passwordTemplate">
+                  <input
+                    #password
+                    [type]="passwordVisible ? 'text' : 'password'"
+                    nz-input
+                    formControlName="password"
+                    (input)="onChangePassword()"
+                    placeholder="* Password"
+                  />
+                </nz-input-group>
+              </nz-form-control>
+              <nz-form-explain *ngIf="validateRegisterForm.get('password')?.dirty && validateRegisterForm.get('password')?.errors">
+                  <span class="login-form-explain">* This filed is required</span>
+              </nz-form-explain>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control>
+                <nz-input-group [nzSuffix]="passwordTemplate">
+                  <input
+                    [type]="passwordVisible ? 'text' : 'password'"
+                    nz-input
+                    formControlName="confirmPassword"
+                    placeholder="* Retype password"
+                    (input)="onChangePassword()"
+                    pattern="{{ password.value }}"
+                  />
+                </nz-input-group>
+              </nz-form-control>
+              <nz-form-explain *ngIf="validateRegisterForm.get('confirmPassword')?.dirty && validateRegisterForm.get('confirmPassword')?.errors">
+                  <span class="login-form-explain" [hidden]="validateRegisterForm.get('confirmPassword')?.errors?.pattern">* This filed is required</span>
+                  <span class="login-form-explain" [hidden]="!validateRegisterForm.get('confirmPassword')?.errors?.pattern">* Password does not match</span>
+              </nz-form-explain>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control>
+                  <nz-input-group [nzSuffix]="facebookTemplate">
+                    <input type="text" nz-input formControlName="facebook" placeholder="Facebook: fb.com/2312dvxcvcxvxcvxc"/>
+                  </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control *ngIf="!isRegister">
+                <button nz-button class="login-form-button" [nzType]="'primary'">Sign In</button>
+                Or
+                <a class="a-blue">Register now!</a>
+              </nz-form-control>
+              <nz-form-control *ngIf="isRegister" class="register-group">
+                <label nz-checkbox [(ngModel)]="agreeTerms" class="register-group__label" (change)="onChangeAgreeTerms()" [ngModelOptions]="{standalone: true}">
+                  <span>I agree to the <a class="a-blue">terms</a></span>
+                </label>
+                <button nz-button class="register-form-button" [nzType]="'primary'">Register</button>
+                <nz-form-explain [hidden]="!explainTermsCheckbox">
+                    <span class="login-form-explain">* Click agree to continue</span>
+                </nz-form-explain>
+                Have account?
+                <a class="a-blue" (click)="isRegister = !isRegister">Sign in here</a>
+              </nz-form-control>
+            </nz-form-item>
+          </form>
+          <!-- Bottom Form -->
+          <div class="shadow-login-form"></div>
+          <a class="login-form-forgot" *ngIf="!isRegister" (click)="forgotPass()">
+            <i nz-icon nzType="arrow-right"></i>&nbsp;
+            <span *ngIf="isLogin">Forgot password?</span>
+            <span *ngIf="!isLogin">Login</span>
+          </a><br>
+          <a class="login-form-forgot" *ngIf="!isRegister" (click)="isRegister = !isRegister">
+              <i nz-icon nzType="arrow-right"></i>&nbsp;
+              <span>Register</span>
+            </a>
+      </div>
+    </div>  
+  </div>
+  
+  <ng-template #facebookTemplate>
+      <i nz-icon nzType="facebook"></i>
+    </ng-template>
+  <ng-template #emailTemplate>
+    <i nz-icon nzType="mail"></i>
+  </ng-template>
+  <ng-template #usernameTemplate>
+    <i nz-icon nzType="user"></i>
+  </ng-template>
+  <ng-template #passwordTemplate>
+    <i nz-icon nzType="lock" *ngIf="!hasPassString"></i>
+    <i nz-icon nzType="passwordVisible ? 'eye-invisible' : 'eye'" *ngIf="hasPassString" (click)="passwordVisible = !passwordVisible"></i>
+  </ng-template>  
+</page>

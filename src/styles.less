@@ -1,0 +1,93 @@
+@import '~prismjs/themes/prism.css';
+@import '~ng-zorro-antd/ng-zorro-antd.less';
+// @import "~ng-zorro-antd/style/index.less"; /* Import basic styles */
+// @import "~ng-zorro-antd/button/style/index.less"; /* Import styles of the component */
+body {
+    margin: 0;
+    padding: 0 !important;
+}
+
+.preloader {
+    @keyframes fade {
+        from {
+            opacity: 1.0;
+        }
+        50% {
+            opacity: 0.4;
+        }
+        to {
+            opacity: 1.0;
+        }
+    }
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    animation: fade 3000ms infinite;
+}
+.lds-dual-ring {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  border-color: #000 transparent #000 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.colorweak {
+    filter: invert(80%);
+}
+
+.pull-left {
+  float: left !important;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+
+
+// [color="dust"] {
+//     color: '#F5222D';
+// }
+// [color="volcano"] {
+//     color: '#FA541C';
+// }
+// [color="sunset"] {
+//     color: '#FAAD14';
+// }
+// [color="cyan"] {
+//     color: '#13C2C2';
+// }
+// [color="green"] {
+//     color: '#52C41A';
+// }
+// [color="daybreak"] {
+//     color: '#1890FF';
+// }
+// [color="geekblue"] {
+//     color: '#2F54EB';
+// }
+// [color="purple"] {
+//     color: '#722ED1';
+// }
+

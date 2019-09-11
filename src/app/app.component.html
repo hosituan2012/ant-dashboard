@@ -1,0 +1,61 @@
+<layout [(collapsed)]="layout.collapsed" [siderMode]="layout.siderMode" [topMode]="layout.topMode()" [setting]="layout.setting">
+  <ng-container sider>
+    <div class="logo" [class.light]="layout.setting.theme == 'light'">
+      <h1>LOGO</h1>
+    </div>
+    <navbar [data]="menu" [inlineCollapsed]="layout.siderMode == 'over' ? false : layout.collapsed"></navbar>
+    <button (click)="showLayout()">đásdas</button>
+  </ng-container>
+
+  <ng-container header>
+    <toolbar>
+      <ng-container left *ngIf="!layout.topMode()">
+        <i nz-icon class="anticon trigger" [type]="layout.collapsed ? 'menu-unfold' : 'menu-fold'" (click)="layout.collapsed=!layout.collapsed"></i>
+      </ng-container>
+      <ng-container left *ngIf="layout.topMode()">
+        <div class="logo">
+          <h1>LOGO</h1>
+        </div>
+        <navbar [data]="menu" mode="horizontal"></navbar>
+      </ng-container>
+      <ng-container right>
+        <a class="action" nz-tooltip nzPlacement="bottom" nzTitle="Get the source code" target="_blank" href="https://github.com/repertory/ng-antd-admin">
+          <i nz-icon type="github"></i>
+        </a>
+        <notice-popover [spinning]="user.notice.spinning" [data]="user.notice.data" [innerClass]="{ action: true, notice: true }"
+          (clear)="user.notice.clear($event)" (visibleChange)="user.notice.visibleChange($event)" *ngIf="user.current">
+          <i nz-icon type="bell"></i>
+        </notice-popover>
+        <nz-dropdown nzPlacement="bottomRight" *ngIf="user.current">
+          <span nz-dropdown class="action account">
+            <nz-avatar nzSize="small" nzIcon="anticon anticon-user"></nz-avatar>
+            <span class="name" *ngIf="user.current?.name">{{ user.current?.name }}</span>
+          </span>
+          <ul nz-menu>
+            <li nz-menu-item routerLink="/account/center">
+              <i nz-icon type="user"></i>Profile
+            </li>
+            <li nz-menu-item routerLink="/account/setting">
+              <i nz-icon type="setting"></i>Settings
+            </li>
+            <li nz-menu-divider></li>
+            <li nz-menu-item (click)="logout()">
+              <i nz-icon type="logout"></i>Logout
+            </li>
+          </ul>
+        </nz-dropdown>
+        <setting-drawer [(setting)]="layout.setting" [innerClass]="{ action: true, setting: true }">
+          <i nz-icon type="setting"></i>
+        </setting-drawer>
+      </ng-container>
+    </toolbar>
+  </ng-container>
+
+  <ng-container>
+    <router-outlet></router-outlet>
+  </ng-container>
+
+  <ng-container footer>
+    <div style="text-align: center;">Copyright ©2018 Powered By ZIIDT</div>
+  </ng-container>
+</layout>
