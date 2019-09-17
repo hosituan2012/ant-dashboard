@@ -39,24 +39,24 @@
                 </p>
                 <nz-divider></nz-divider>
                 <div nz-row nzType="flex" nzJustify="start" class="profile-input">
-                  <div nz-col nzSpan="10">Name</div>
-                  <div nz-col nzSpan="14"><input nz-input placeholder="Basic usage" [(ngModel)]="tempInputValue.name" /></div>
+                  <div nz-col nzSpan="8">Name</div>
+                  <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="tempInputValue.name" /></div>
                 </div>
                 <div nz-row nzType="flex" nzJustify="start" class="profile-input">
-                  <div nz-col nzSpan="10">Email</div>
-                  <div nz-col nzSpan="14"><input nz-input placeholder="Basic usage" [(ngModel)]="tempInputValue.email" [disabled]="true"></div>
+                  <div nz-col nzSpan="8">Email</div>
+                  <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="tempInputValue.email" [disabled]="true"></div>
                 </div>
                 <div nz-row nzType="flex" nzJustify="start" class="profile-input">
-                  <div nz-col nzSpan="10">Password</div>
-                  <div nz-col nzSpan="14">
+                  <div nz-col nzSpan="8">Password</div>
+                  <div nz-col nzSpan="16">
                     <nz-input-group [nzSuffix]="suffixIconSearch">
                       <input type="password" nz-input placeholder="input search text" [(ngModel)]="tempInputValue.password"/>
                     </nz-input-group>
                   </div>
                 </div>
                 <div nz-row nzType="flex" nzJustify="start" class="profile-input">
-                  <div nz-col nzSpan="10">Facebook</div>
-                  <div nz-col nzSpan="14"><input nz-input placeholder="Basic usage" [(ngModel)]="tempInputValue.facebook" /></div>
+                  <div nz-col nzSpan="8">Facebook</div>
+                  <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="tempInputValue.facebook" /></div>
                 </div>
                 <button nz-button class="pull-right" [nzType]="'primary'" [nzLoading]="loading" (click)="editProfile()">Update</button>
               </div>

@@ -1,51 +1,137 @@
 <page [title]="'Channel manager'">
   <nz-card style="width:100%;">
     <span class="vip-search-header">Dailymotion Search Videos</span>
-    <div nz-row [nzGutter]="40">
-      <div nz-col [nzSpan]="8">
+    <div nz-row [nzGutter]="70">
+      <div nz-col [nzSpan]="7">
         <div nz-row nzType="flex" nzJustify="start" class="vip-search-input" style="margin-top: 20px;">
-          <div nz-col nzSpan="8">Keyword</div>
-          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+          <div nz-col nzSpan="7">Keyword</div>
+          <div nz-col nzSpan="17"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
         </div>
         <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
-          <div nz-col nzSpan="8">User ID</div>
-          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+          <div nz-col nzSpan="7">User ID</div>
+          <div nz-col nzSpan="17"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
         </div>
         <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
-          <div nz-col nzSpan="8">Sort</div>
-          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
-        </div>
-      </div>
-
-      <div nz-col [nzSpan]="8">
-        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
-          <div nz-col nzSpan="8">Limit results</div>
-          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
-        </div>
-        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
-          <div nz-col nzSpan="8">Video Time Over</div>
-          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
-        </div>
-        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
-          <div nz-col nzSpan="8">Country</div>
-          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+          <div nz-col nzSpan="7">Sort</div>
+          <div nz-col nzSpan="17">
+            <nz-select [(ngModel)]="searchInputValue.name" nzAllowClear nzPlaceHolder="Choose" style="width: 100%">
+              <nz-option nzValue="on" nzLabel="On"></nz-option>
+              <nz-option nzValue="off" nzLabel="Off"></nz-option>
+            </nz-select>
+          </div>
         </div>
       </div>
 
-      <div nz-col [nzSpan]="8">
+      <div nz-col [nzSpan]="7">
         <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
-          <div nz-col nzSpan="8">Language</div>
-          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+          <div nz-col nzSpan="7">Limit results</div>
+          <div nz-col nzSpan="17">
+            <nz-select [(ngModel)]="searchInputValue.name" nzAllowClear nzPlaceHolder="Choose" style="width: 100%">
+              <nz-option nzValue="on" nzLabel="On"></nz-option>
+              <nz-option nzValue="off" nzLabel="Off"></nz-option>
+            </nz-select>
+          </div>
         </div>
         <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
-          <div nz-col nzSpan="8">Category</div>
-          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+          <div nz-col nzSpan="7">Video Time Over</div>
+          <div nz-col nzSpan="17">
+            <nz-select [(ngModel)]="searchInputValue.name" nzAllowClear nzPlaceHolder="Choose" style="width: 100%">
+              <nz-option nzValue="on" nzLabel="On"></nz-option>
+              <nz-option nzValue="off" nzLabel="Off"></nz-option>
+            </nz-select>
+          </div>
         </div>
         <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
-          <div nz-col nzSpan="8">Page</div>
-          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+          <div nz-col nzSpan="7">Country</div>
+          <div nz-col nzSpan="17">
+            <nz-select [(ngModel)]="searchInputValue.name" nzAllowClear nzPlaceHolder="Choose" style="width: 100%">
+              <nz-option nzValue="on" nzLabel="On"></nz-option>
+              <nz-option nzValue="off" nzLabel="Off"></nz-option>
+            </nz-select>
+          </div>
+        </div>
+      </div>
+
+      <div nz-col [nzSpan]="7">
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
+          <div nz-col nzSpan="7">Language</div>
+          <div nz-col nzSpan="17">
+            <nz-select [(ngModel)]="searchInputValue.name" nzAllowClear nzPlaceHolder="Choose" style="width: 100%">
+              <nz-option nzValue="on" nzLabel="On"></nz-option>
+              <nz-option nzValue="off" nzLabel="Off"></nz-option>
+            </nz-select>
+          </div>
+        </div>
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
+          <div nz-col nzSpan="7">Category</div>
+          <div nz-col nzSpan="17">
+            <nz-select [(ngModel)]="searchInputValue.name" nzAllowClear nzPlaceHolder="Choose" style="width: 100%">
+              <nz-option nzValue="on" nzLabel="On"></nz-option>
+              <nz-option nzValue="off" nzLabel="Off"></nz-option>
+            </nz-select>
+          </div>
+        </div>
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
+          <div nz-col nzSpan="7">Page</div>
+          <div nz-col nzSpan="17">
+            <nz-select nzAllowClear nzPlaceHolder="Choose" style="width: 100%">
+              <nz-option nzValue="on" nzLabel="On"></nz-option>
+              <nz-option nzValue="off" nzLabel="Off"></nz-option>
+            </nz-select>
+          </div>
         </div>
       </div> 
+      <div nz-col [nzSpan]="3">
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-btn">
+          <button nz-button (click)="openModal('add', null)" nzType="primary" class="vip-search-btn__btn">SEARCH</button>
+        </div>
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-btn">
+          <button nz-button (click)="openModal('add', null)" class="vip-search-btn__btn vip-search-btn__cancel">RESET</button>
+        </div>
+          
+      </div> 
+    </div>
+    <div nz-row>
+        <nz-table
+        #dynamicTable
+        [nzData]="listOfData"
+        [nzBordered]="true"
+        [nzSimple]="simple"
+        [nzLoading]="loading"
+        [nzPaginationPosition]="position"
+        [nzShowSizeChanger]="sizeChanger"
+        [nzFrontPagination]="pagination"
+        [nzShowPagination]="pagination"
+        [nzSize]="size"
+        (nzCurrentPageDataChange)="currentPageDataChange($event)"
+      >
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+          <tr>
+            <th nzWidth="250px" nzShowSort nzSortKey="name">Video</th>
+            <th nzShowSort nzSortKey="channel">Title</th>
+            <th nzShowSort nzSortKey="email">Language/Country</th>
+            <th nzShowSort nzSortKey="view">Username</th>
+            <th nzShowSort nzSortKey="follower">Duration</th>
+            <th nzShowSort nzSortKey="video">Views</th>
+            <th nzShowSort nzSortKey="net">Published</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-template ngFor let-data [ngForOf]="dynamicTable.data">
+            <tr>
+              <td>
+                <img src="{{data.img}}" alt="Preview" width="150px" height="100px">
+              </td>
+              <td class="vip-search-table__title">{{ data.title }}</td>
+              <td>{{ data.language }}</td>
+              <td class="vip-search-table__title">{{ data.username }}</td>
+              <td>{{ data.duration }} minutes</td>
+              <td>{{ data.view }}</td>
+              <td>{{ data.timestamp | date}}</td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </nz-table>
     </div>
   </nz-card>
 </page>
