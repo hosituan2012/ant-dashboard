@@ -11,6 +11,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './../shared/shared.module';
 import { ExceptionPageComponent } from './exception-page/exception-page.component';
+import { PageModule } from './page/page.module';
 
 @NgModule({
   declarations: [LoginPageComponent, ExceptionPageComponent],
@@ -22,7 +23,8 @@ import { ExceptionPageComponent } from './exception-page/exception-page.componen
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    AccountPageModule
+    AccountPageModule,
+    PageModule
   ]
 })
 export class RoutesModule { }

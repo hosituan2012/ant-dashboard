@@ -1,3 +1,132 @@
-<p>
-  profile works!
-</p>
+<page [title]="'User profile'">
+    <div nz-row [nzGutter]="20">
+      <div nz-col [nzSpan]="8">
+        <nz-card [nzBordered]="false" class="account-card">
+          <div class="user-head-group">
+              <!-- <img src="../../../assets/images/icons/man.png" alt="Avatar" class="user-head-group__avt"><br> -->
+              <nz-avatar [nzSize]="100" nzIcon="user" class="user-head-group__avt"></nz-avatar><br>
+              <span class="user-head-group__username">Username</span><br/>
+              <small>Premium User</small>
+          </div>
+          <nz-divider class="user-info-divider"></nz-divider>
+          <p class="user-info-group">
+            <span class="pull-left">Total Channel</span>
+            <span class="pull-right user-info-group__value">0</span>
+          </p>
+          <nz-divider class="user-info-divider"></nz-divider>
+            <p class="user-info-group">
+              <span class="pull-left">Plans</span>
+              <span class="pull-right user-info-group__value">Unlimit</span>
+            </p>
+          <nz-divider class="user-info-divider"></nz-divider>
+            <p class="user-info-group">
+              <span class="pull-left">Available to</span>
+              <span class="pull-right user-info-group__value">2044-04-05 (8611 days)</span>
+            </p>
+          <nz-divider class="user-info-divider"></nz-divider>
+          <button nz-button class="user-info-btn" [nzType]="'primary'" [nzLoading]="loading">Change Plans</button>
+        </nz-card>
+      </div>
+      <div nz-col [nzSpan]="16">
+  
+        <nz-card [nzBordered]="false" class="account-card">
+          <nz-tabset>
+            <nz-tab nzTitle="My Profile">
+              <div nz-col [nzSpan]="12">
+                <p class="user-info-group">
+                  <span class="pull-left">Status: <span class="user-info-group__status">ON</span></span>
+                  <span class="pull-right">Register on: 2018-06-19</span>
+                </p>
+                <nz-divider></nz-divider>
+                <div nz-row nzType="flex" nzJustify="start" class="profile-input">
+                  <div nz-col nzSpan="10">Name</div>
+                  <div nz-col nzSpan="14"><input nz-input placeholder="Basic usage" [(ngModel)]="tempInputValue.name" /></div>
+                </div>
+                <div nz-row nzType="flex" nzJustify="start" class="profile-input">
+                  <div nz-col nzSpan="10">Email</div>
+                  <div nz-col nzSpan="14"><input nz-input placeholder="Basic usage" [(ngModel)]="tempInputValue.email" [disabled]="true"></div>
+                </div>
+                <div nz-row nzType="flex" nzJustify="start" class="profile-input">
+                  <div nz-col nzSpan="10">Password</div>
+                  <div nz-col nzSpan="14">
+                    <nz-input-group [nzSuffix]="suffixIconSearch">
+                      <input type="password" nz-input placeholder="input search text" [(ngModel)]="tempInputValue.password"/>
+                    </nz-input-group>
+                  </div>
+                </div>
+                <div nz-row nzType="flex" nzJustify="start" class="profile-input">
+                  <div nz-col nzSpan="10">Facebook</div>
+                  <div nz-col nzSpan="14"><input nz-input placeholder="Basic usage" [(ngModel)]="tempInputValue.facebook" /></div>
+                </div>
+                <button nz-button class="pull-right" [nzType]="'primary'" [nzLoading]="loading" (click)="editProfile()">Update</button>
+              </div>
+            </nz-tab>
+  
+            <!-- tab2 -->
+            <nz-tab nzTitle="Plans">
+              <div nz-row [nzGutter]="40" class="acc-plan-tab">
+  
+                <p style="font-size: 22px; color: #1890FF; margin-bottom: 0">Choose your plan</p>
+                <div class="acc-plan-tab__des"><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, <br> when an unknown printer took a galley of type and scrambled it to make a type specimen book. </small></div>
+                <div nz-col [nzSpan]="8">
+                  <nz-card class="acc-plan-tab__card">
+                    <span style="font-size: 20px;">BASIC</span>
+                    <nz-divider></nz-divider>
+                    <div class="acc-plan-tab__card--des">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</div>
+                    <div class="acc-plan-tab__card--content">
+                      <p>Free Create Data Videos</p>
+                      <p>Remote Upload Videos</p>
+                      <p>Full Support: No</p>
+                      <p>Durations: 30 Days</p>
+                      <p>Channel: 03</p>
+                    </div>
+                    <p class="acc-plan-tab__card--price">$12</p>
+                    <button nz-button nzType="primary" nzGhost style="width: 100%">BUY NOW</button>
+                  </nz-card>
+                </div>
+                <div nz-col [nzSpan]="8">
+                  <div id="trapezoid"><span>Best value</span></div>
+                  <nz-card class="acc-plan-tab__card">
+                    <span style="font-size: 20px;">PRO</span>
+                    <nz-divider></nz-divider>
+                    <div class="acc-plan-tab__card--des">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</div>
+                    <div class="acc-plan-tab__card--content">
+                      <p>Free Create Data Videos</p>
+                      <p>Remote Upload Videos</p>
+                      <p>Full Support: No</p>
+                      <p>Durations: 30 Days</p>
+                      <p>Channel: 03</p>
+                    </div>
+                    <p class="acc-plan-tab__card--price">$15</p>
+                    <button nz-button nzType="primary" style="width: 100%">BUY NOW</button>
+                  </nz-card>
+                </div>
+                <div nz-col [nzSpan]="8">
+                  <nz-card class="acc-plan-tab__card">
+                    <span style="font-size: 20px;">PREMIUM</span>
+                    <nz-divider></nz-divider>
+                    <div class="acc-plan-tab__card--des">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</div>
+                    <div class="acc-plan-tab__card--content">
+                      <p>Free Create Data Videos</p>
+                      <p>Remote Upload Videos</p>
+                      <p>Full Support: No</p>
+                      <p>Durations: 30 Days</p>
+                      <p>Channel: 03</p>
+                    </div>
+                    <p class="acc-plan-tab__card--price">$25</p>
+                    <button nz-button nzType="primary" nzGhost style="width: 100%">BUY NOW</button>
+                  </nz-card>
+                </div>
+              </div>
+            </nz-tab>
+            <!-- end tab2 -->
+          </nz-tabset>
+        </nz-card>
+      </div>
+    </div>
+  
+    <ng-template #suffixIconSearch>
+        <i nz-icon nzType="edit"></i>
+      </ng-template>
+  </page>
+  

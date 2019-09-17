@@ -1,0 +1,68 @@
+<form nz-form [formGroup]="channelActionForm" class="login-form" (ngSubmit)="submitForm()">
+  <div nz-col [nzSpan]="24">
+    <div nz-row nzType="flex" nzJustify="start" class="channel-modal-input">
+      <div nz-col nzSpan="9">User Name</div>
+      <div nz-col nzSpan="15">
+        <nz-form-control>
+          <nz-input-group>
+            <input type="text" nz-input formControlName="username" placeholder="* Username" />
+          </nz-input-group>
+        </nz-form-control>
+      </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="start" class="channel-modal-input">
+      <div nz-col nzSpan="9">Channel Email</div>
+      <div nz-col nzSpan="15">
+        <nz-form-control>
+          <nz-input-group>
+            <input type="text" nz-input formControlName="channel_email" placeholder="* Email" />
+          </nz-input-group>
+        </nz-form-control>
+      </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="start" class="channel-modal-input">
+      <div nz-col nzSpan="9">Channel Password</div>
+      <div nz-col nzSpan="15">
+        <nz-form-control>
+          <nz-input-group>
+            <input type="password" nz-input formControlName="channel_password" placeholder="* Password" />
+          </nz-input-group>
+        </nz-form-control>
+      </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="start" class="channel-modal-input">
+      <div nz-col nzSpan="9">API Key</div>
+      <div nz-col nzSpan="15">
+        <nz-form-control>
+          <nz-input-group>
+            <input type="text" nz-input formControlName="api_key" placeholder="* API Key" />
+          </nz-input-group>
+        </nz-form-control>
+      </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="start" class="channel-modal-input">
+      <div nz-col nzSpan="9">API Secret</div>
+      <div nz-col nzSpan="15">
+        <nz-form-control>
+          <nz-input-group>
+            <input type="text" nz-input formControlName="api_secret" placeholder="* Secret" />
+          </nz-input-group>
+        </nz-form-control>
+      </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="start" class="channel-modal-input" style="margin: 11px 0;">
+      <div nz-col nzSpan="9">Network</div>
+      <div nz-col nzSpan="15">
+        <nz-select formControlName="network" nzAllowClear nzPlaceHolder="Choose">
+          <nz-option nzValue="on" nzLabel="On"></nz-option>
+          <nz-option nzValue="off" nzLabel="Off"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+  </div>
+  <p *ngIf="!isValid"><span class="channel-modal-warning">* Please fill all the field has *</span></p>
+  <div nz-col nzSpan="24" class="channel-modal-btn">  
+    <button nz-button nzType="primary" type="submit" class="pull-right" [nzLoading]="isConfirmLoading">Submit</button>
+    <button nz-button nzType="default" class="pull-right channel-modal-btn__cancel" (click)="destroyModal('close')">Cancel</button>
+  </div>
+</form>

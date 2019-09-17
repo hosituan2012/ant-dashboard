@@ -1,0 +1,51 @@
+<page [title]="'Channel manager'">
+  <nz-card style="width:100%;">
+    <span class="vip-search-header">Dailymotion Search Videos</span>
+    <div nz-row [nzGutter]="40">
+      <div nz-col [nzSpan]="8">
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input" style="margin-top: 20px;">
+          <div nz-col nzSpan="8">Keyword</div>
+          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+        </div>
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
+          <div nz-col nzSpan="8">User ID</div>
+          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+        </div>
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
+          <div nz-col nzSpan="8">Sort</div>
+          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+        </div>
+      </div>
+
+      <div nz-col [nzSpan]="8">
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
+          <div nz-col nzSpan="8">Limit results</div>
+          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+        </div>
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
+          <div nz-col nzSpan="8">Video Time Over</div>
+          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+        </div>
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
+          <div nz-col nzSpan="8">Country</div>
+          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+        </div>
+      </div>
+
+      <div nz-col [nzSpan]="8">
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
+          <div nz-col nzSpan="8">Language</div>
+          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+        </div>
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
+          <div nz-col nzSpan="8">Category</div>
+          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+        </div>
+        <div nz-row nzType="flex" nzJustify="start" class="vip-search-input">
+          <div nz-col nzSpan="8">Page</div>
+          <div nz-col nzSpan="16"><input nz-input placeholder="Basic usage" [(ngModel)]="searchInputValue.name" /></div>
+        </div>
+      </div> 
+    </div>
+  </nz-card>
+</page>

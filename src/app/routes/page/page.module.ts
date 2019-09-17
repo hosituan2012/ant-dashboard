@@ -13,6 +13,7 @@ import { PageComponent } from './page.component';
     SharedModule,
     PageRoutingModule
   ],
-  declarations: [PageComponent]
+  declarations: [PageComponent],
+  exports: [PageComponent]
 })
 export class PageModule { }

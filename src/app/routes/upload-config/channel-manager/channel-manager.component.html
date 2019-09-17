@@ -1,0 +1,67 @@
+<page [title]="'Channel manager'">
+  <nz-card style="width:100%;">
+    <div style="width: 100%; margin-bottom: 50px;">
+      <div class="pull-left">
+          <button nz-button (click)="openModal('add', null)" nzType="primary"><i nz-icon nzType="plus" nzTheme="outline"></i>Add new channel</button>
+      </div>
+      <div class="pull-right">
+        <nz-input-group [nzSuffix]="suffixIconSearch">
+          <input type="text" nz-input placeholder="Input search text" />
+        </nz-input-group>
+      </div>
+    </div>
+      <nz-table
+        #dynamicTable
+        [nzData]="listOfData"
+        [nzBordered]="true"
+        [nzSimple]="simple"
+        [nzLoading]="loading"
+        [nzPaginationPosition]="position"
+        [nzShowSizeChanger]="sizeChanger"
+        [nzFrontPagination]="pagination"
+        [nzShowPagination]="pagination"
+        [nzSize]="size"
+        (nzCurrentPageDataChange)="currentPageDataChange($event)"
+      >
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+          <tr>
+            <th nzWidth="50px" nzShowSort nzSortKey="name">ID</th>
+            <th nzShowSort nzSortKey="channel">Channel</th>
+            <th nzShowSort nzSortKey="email">Email</th>
+            <th nzShowSort nzSortKey="view">View</th>
+            <th nzShowSort nzSortKey="follower">Followers</th>
+            <th nzShowSort nzSortKey="video">Videos</th>
+            <th nzShowSort nzSortKey="net">Net</th>
+            <th nzShowSort nzSortKey="status">Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-template ngFor let-data [ngForOf]="dynamicTable.data">
+            <tr>
+              <td>{{ data.id }}</td>
+              <td>{{ data.channel }}</td>
+              <td>{{ data.email }}</td>
+              <td>{{ data.view }}</td>
+              <td>{{ data.follower }}</td>
+              <td>{{ data.video }}</td>
+              <td><nz-tag [nzColor]="data.net == 'ON' ? '#00a65a' : '#e51313'">{{ data.net }}</nz-tag></td>
+              <td><nz-tag [nzColor]="data.status == 'ON' ? '#00a65a' : '#e51313'">{{ data.status }}</nz-tag></td>
+              <td>
+                <a href="#"><nz-tag [nzColor]="'#00c0ef'">Update</nz-tag></a>
+                <nz-divider nzType="vertical"></nz-divider>
+                <a (click)="openModal('edit', data.id)"><nz-tag [nzColor]="'#00a65a'">Edit</nz-tag></a>
+                <nz-divider nzType="vertical"></nz-divider>
+                <a href="#"><nz-tag [nzColor]="'#e51313'">Delete</nz-tag></a>
+              </td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </nz-table>
+    </nz-card>
+</page>
+
+
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="search"></i>
+  </ng-template>

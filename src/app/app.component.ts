@@ -43,6 +43,33 @@ export class AppComponent {
           title: 'Profile',
           routerLink: '/account/profile'
         },
+        // {
+        //   title: 'Settings',
+        //   routerLink: '/account/setting'
+        // }
+      ]
+    },
+    {
+      title: 'Tool',
+      icon: 'tool',
+      children: [
+        { title: 'Vip tool',
+          children: [
+            { title: 'Advance Search', routerLink: '/tool/vip/search' },
+            { title: 'Upload Videos', routerLink: '/tool/vip/upload' },
+          ]
+        },
+        { title: 'User Management', routerLink: '/system/user' }
+      ]
+    },
+    {
+      title: 'Upload Config',
+      icon: 'setting',
+      children: [
+        {
+          title: 'Channel Manager',
+          routerLink: '/config/channel'
+        },
         {
           title: 'Settings',
           routerLink: '/account/setting'
