@@ -8,10 +8,10 @@
               <nz-form-item>
                 <nz-form-control>
                     <nz-input-group [nzSuffix]="usernameTemplate">
-                      <input type="text" nz-input formControlName="userName"/>
+                      <input type="text" nz-input formControlName="username"/>
                     </nz-input-group>
                 </nz-form-control>
-                <nz-form-explain *ngIf="validateLoginForm.get('userName')?.dirty && validateLoginForm.get('userName')?.errors">
+                <nz-form-explain *ngIf="validateLoginForm.get('username')?.dirty && validateLoginForm.get('username')?.errors">
                     <span class="login-form-explain">* This filed is required</span>
                 </nz-form-explain>
               </nz-form-item>
@@ -66,10 +66,10 @@
               <nz-form-item>
                 <nz-form-control>
                     <nz-input-group [nzSuffix]="usernameTemplate">
-                      <input type="text" nz-input formControlName="userName" placeholder="* Fullname: Donald Trump"/>
+                      <input type="text" nz-input formControlName="username" placeholder="* Fullname: Donald Trump"/>
                     </nz-input-group>
                 </nz-form-control>
-                <nz-form-explain *ngIf="validateRegisterForm.get('userName')?.dirty && validateRegisterForm.get('userName')?.errors">
+                <nz-form-explain *ngIf="validateRegisterForm.get('username')?.dirty && validateRegisterForm.get('username')?.errors">
                     <span class="login-form-explain">* This filed is required</span>
                 </nz-form-explain>
               </nz-form-item>

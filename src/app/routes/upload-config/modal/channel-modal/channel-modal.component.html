@@ -54,8 +54,17 @@
       <div nz-col nzSpan="9">Network</div>
       <div nz-col nzSpan="15">
         <nz-select formControlName="network" nzAllowClear nzPlaceHolder="Choose">
-          <nz-option nzValue="on" nzLabel="On"></nz-option>
-          <nz-option nzValue="off" nzLabel="Off"></nz-option>
+          <nz-option nzValue="true" nzLabel="On"></nz-option>
+          <nz-option nzValue="false" nzLabel="Off"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="start" class="channel-modal-input" style="margin: 11px 0;">
+      <div nz-col nzSpan="9">Status</div>
+      <div nz-col nzSpan="15">
+        <nz-select formControlName="status" nzAllowClear nzPlaceHolder="Choose">
+          <nz-option nzValue="true" nzLabel="On"></nz-option>
+          <nz-option nzValue="false" nzLabel="Off"></nz-option>
         </nz-select>
       </div>
     </div>

@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
 
-import { UserService } from '~/shared/shared.module';
+import { UserService } from '../../shared/shared.module';
+import { AccountApi } from '../../shared/sdk-build';
 
 @Component({
   selector: 'app-login-page',
@@ -33,10 +34,11 @@ export class LoginPageComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private message: NzMessageService,
-    private user: UserService
+    private user: UserService,
+    private accountApi: AccountApi
   ) {
     this.validateLoginForm = this.fb.group({
-      userName: [null, [Validators.required]],
+      username: [null, [Validators.required]],
       password: [null, [Validators.required]],
     });
     this.validateEmailForm = this.fb.group({
@@ -46,7 +48,7 @@ export class LoginPageComponent implements OnInit {
       ]))
     });
     this.validateRegisterForm = this.fb.group({
-      userName: [null, [Validators.required]],
+      username: [null, [Validators.required]],
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
@@ -90,7 +92,13 @@ export class LoginPageComponent implements OnInit {
           this.validateLoginForm.controls[i].updateValueAndValidity();
         }
 
-        if (this.validateLoginForm.valid) console.log(this.validateLoginForm.getRawValue());
+        if (this.validateLoginForm.valid) {
+          this.accountApi.login(this.validateLoginForm.getRawValue()).subscribe((res) => {
+            console.log('res', res);
+            
+          });
+  
+        }
       } else {
         this.validateEmailForm.controls['email'].markAsDirty();
         this.validateEmailForm.controls['email'].updateValueAndValidity();
@@ -100,10 +108,15 @@ export class LoginPageComponent implements OnInit {
     }
     const value = this.validateLoginForm.value;
     if (this.validateLoginForm.valid) {
-        if (value.userName === 'admin' && value.password === 'admin') {
+        if (value.username === 'admin' && value.password === 'admin') {
             localStorage.setItem('mmoCurrentUser', JSON.stringify(value));
             this.router.navigate(['/dashboard']);
         }
+
+        this.accountApi.login(value).subscribe((res) => {
+          console.log('res', res);
+          
+        });
 
         this.submiting = true;
         setTimeout(() => {

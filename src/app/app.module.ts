@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { RoutesModule } from './routes/routes.module';
 import { LoginPageComponent } from './routes/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SDKBrowserModule } from './shared/sdk-build';
 // import { PageModule } from './routes/page/page.module';
 
 registerLocaleData(zh);
@@ -32,6 +33,7 @@ registerLocaleData(zh);
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    SDKBrowserModule.forRoot(),
     // PageModule
     // RoutesModule
   ],

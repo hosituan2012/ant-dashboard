@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NzModalService } from 'ng-zorro-antd';
+import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
 import { ChannelModalComponent } from '../modal/channel-modal/channel-modal.component';
+import { ChannelApi } from '../../../shared/sdk-build';
 
 @Component({
   selector: 'app-channel-manager',
@@ -39,21 +40,23 @@ export class ChannelManagerComponent implements OnInit {
 
   constructor(
     private modalService: NzModalService,
+    private channelApi: ChannelApi,
+    private notification: NzNotificationService,
   ) { }
 
   ngOnInit() {
-    for (let i = 1; i <= 100; i++) {
-      this.listOfData.push({
-        id: i,
-        channel: 'John Brown',
-        email: `vxcvcx${i}@2.com`,
-        view: i * 44322,
-        follower: i * 8723,
-        video: i * 128,
-        net: i % 2 == 0 ? 'ON' : 'OFF',
-        status: i % 2 == 0 ? 'ON' : 'OFF',
-      });
-    }
+    this.loadData();
+  }
+
+  private loadData() {
+    this.channelApi.find().subscribe((data) => {
+      if (data && data.length !== 0) {
+        this.listOfData = data;
+        console.log('channel data', data);
+      }
+    }, (err) => {
+      console.log('Error when get channel data');
+    });
   }
 
   currentPageDataChange(
@@ -88,18 +91,49 @@ export class ChannelManagerComponent implements OnInit {
     }
   }
 
-  openModal(type, id): void {
+  openModal(type, id, username): void {
     const modal = this.modalService.create({
       nzTitle: type == 'add' ? 'Add new channel' : 'Edit channel',
       nzContent: ChannelModalComponent,
       nzFooter: null,
       nzClassName: 'channel-modal',
-      nzBodyStyle: {'min-height': '385px'},
+      nzBodyStyle: {'min-height': '430px'},
       nzComponentParams: {
         channelId: id
       }
     });
-    modal.afterClose.subscribe(result => console.log('[afterClose] The result is:', result));
+    modal.afterClose.subscribe((result) => {
+      console.log('result close channel modal', result);
+      if (result === 'reloadAddData') {
+        this.loadData();
+        this.createNotification('success', 'Add new channel', 'New channel has been added');
+      } else if (result === 'reloadEditData') {
+        this.loadData();
+        this.createNotification('success', 'Edit channel', `${username} has been edited`);
+      } else if (result === 'error') {
+        this.createNotification('error', 'Error', 'Something went wrong');
+      }
+    });
+  }
+
+  deleteChannel(item) {
+    this.modalService.confirm({
+      nzTitle: `Are you sure you want to delete <i>"${item.username}</i>"?`,
+      nzContent: 'This action cannot be undone',
+      nzOkText: 'Delete',
+      nzOnOk: () => {
+        this.channelApi.deleteById(item.id).subscribe((res) => {
+          this.createNotification('success', 'Delete Channel', `${item.username} has been deleted!`);
+          this.listOfData = this.listOfData.filter(data => data !== item);
+        }, (err) => {
+          this.createNotification('error', 'Error', 'Something went wrong');
+        });
+      }
+    });
+  }
+
+  private createNotification(type, title, content): void {
+    this.notification.create(type, title, content);
   }
 
 

@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VipUploadComponent implements OnInit {
 
+  uploadInputValue = {
+    name: null
+  };
+
+  checked = false;
+
   constructor() { }
 
   ngOnInit() {

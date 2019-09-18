@@ -1,3 +1,98 @@
-<p>
-  vip-upload works!
-</p>
+<page [title]="'Upload'">
+    <nz-card style="width:100%;">
+      <span class="card-header">Dailymotion Remote Upload Video from URL</span>
+      <div nz-row [nzGutter]="70" style="margin-top: 20px">
+        <div nz-col [nzSpan]="14" style="border-right: 1px solid #d9d9d9">
+          <div nz-row nzType="flex" nzJustify="start" class="upload-input">
+            <label class="upload-input__label">Channel</label>
+            <nz-select [(ngModel)]="uploadInputValue.name" nzAllowClear nzPlaceHolder="Choose" style="width: 100%">
+              <nz-option nzValue="on" nzLabel="On"></nz-option>
+              <nz-option nzValue="off" nzLabel="Off"></nz-option>
+            </nz-select>
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-input">
+            <label class="upload-input__label">Title</label>
+            <input nz-input placeholder="Basic usage" [(ngModel)]="uploadInputValue.name" />
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-input">
+            <label class="upload-input__label">Tags</label>
+            <input nz-input placeholder="Basic usage" [(ngModel)]="uploadInputValue.name" />
+          </div>
+          <div nz-row [nzGutter]="30" nzType="flex" nzJustify="start" class="vip-search-input" style="margin-top: 20px;">
+            <div nz-col nzSpan="12">
+              <label class="upload-input__label">Language</label>
+              <nz-select [(ngModel)]="uploadInputValue.name" nzAllowClear nzPlaceHolder="Choose" style="width: 100%">
+                <nz-option nzValue="on" nzLabel="On"></nz-option>
+                <nz-option nzValue="off" nzLabel="Off"></nz-option>
+              </nz-select>
+            </div>
+            <div nz-col nzSpan="12">
+              <label class="upload-input__label">Category</label>
+              <nz-select [(ngModel)]="uploadInputValue.name" nzAllowClear nzPlaceHolder="Choose" style="width: 100%">
+                <nz-option nzValue="on" nzLabel="On"></nz-option>
+                <nz-option nzValue="off" nzLabel="Off"></nz-option>
+              </nz-select>
+            </div>
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-input">
+            <label class="upload-input__label">Description</label>
+            <textarea rows="3" nz-input [(ngModel)]="uploadInputValue.name"></textarea>
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-input">
+            <label class="upload-input__label">Country Upload</label>
+            <nz-select [(ngModel)]="uploadInputValue.name" nzAllowClear nzPlaceHolder="Choose" style="width: 100%">
+              <nz-option nzValue="on" nzLabel="On"></nz-option>
+              <nz-option nzValue="off" nzLabel="Off"></nz-option>
+            </nz-select>
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-input">
+            <label class="upload-input__label">Link Video</label>
+            <input nz-input placeholder="Basic usage" [(ngModel)]="uploadInputValue.name" />
+          </div>
+        </div>
+        <div nz-col [nzSpan]="10">
+          <span class="upload-option__header">Option For Upload</span>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-option__item" style="margin-top: 15px">
+            <label nz-checkbox [(ngModel)]="checked">Get Link (Youtube,Facebook, Viki.com, Google Drive)</label>  
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-option__item">
+            <label nz-checkbox [(ngModel)]="checked">Thumnail Youtube (Only for channel in Network) </label>  
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-option__item">
+            <label nz-checkbox [(ngModel)]="checked">Tags Youtube (Only for Youtube Video)</label>  
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-option__item" style="margin-top: 20px;">
+            <div nz-col nzSpan="7">Geoblocking</div>
+            <div nz-col nzSpan="17"><input nz-input placeholder="allow" [(ngModel)]="uploadInputValue.name" /></div>
+            <div nz-col nzSpan="24"><small>List of countries where this video is or isn't accessible e.g.: "allow,fr,us,it,vn" or "deny,us,fr,vn"</small></div>
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-option__item">
+            <label nz-checkbox [(ngModel)]="checked">Option Slipt Youtube Video: Max cut to 3 parts</label>  
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-option__item" style="margin-top: 20px;">
+            <div nz-col nzSpan="7">Time to Cut</div>
+            <div nz-col nzSpan="17"><input nz-input placeholder="allow" [(ngModel)]="uploadInputValue.name" /></div>
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-option__item" style="margin-top: 20px;">
+            <div nz-col nzSpan="7">Add to Playlist</div>
+            <div nz-col nzSpan="17"><input nz-input placeholder="https://dailymotion.com/playlist" [(ngModel)]="uploadInputValue.name" /></div>
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-option__item">
+            <label nz-checkbox [(ngModel)]="checked">Feature Video</label>  
+            <label nz-checkbox [(ngModel)]="checked">Public Video</label>  
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-option__item">
+            <label nz-checkbox [(ngModel)]="checked">Add Subtitle if Available</label>  
+          </div>
+          <div nz-row nzType="flex" nzJustify="end">
+            <button nz-button (click)="openModal('add', null)" nzType="primary"><i nz-icon nzType="upload" nzTheme="outline"></i>Start Upload</button>
+          </div>
+          <div nz-row nzType="flex" nzJustify="start" class="upload-input">
+            <span class="upload-input__warning">NOTE: <br></span>
+            <span class="upload-input__warning">- Tool sẽ tự động dọn dẹp mỗi 15 phút, không sử dụng tool nếu số phút hiện tại là (0,15,30,45)</span><br>
+            <span class="upload-input__warning">- DON'T Use Tool if Your Minute is (0,15,30,45) Time for Clean Up Data</span>
+          </div>
+        </div>
+      </div>
+    </nz-card>
+  </page>

@@ -10,9 +10,10 @@ import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: ToolComponent, children: [
-    { path: '', redirectTo: 'vip/search', pathMatch: 'full' },
+    { path: '', redirectTo: 'advance-search', pathMatch: 'full' },
     // { path: 'vip', redirectTo: 'search', pathMatch: 'full' },
-    { path: 'vip/search', component: VipSearchComponent}
+    { path: 'advance-search', component: VipSearchComponent},
+    { path: 'upload', component: VipUploadComponent}
   ]}
 ];
 

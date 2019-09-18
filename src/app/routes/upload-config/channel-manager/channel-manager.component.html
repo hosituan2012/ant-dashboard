@@ -2,7 +2,7 @@
   <nz-card style="width:100%;">
     <div style="width: 100%; margin-bottom: 50px;">
       <div class="pull-left">
-        <button nz-button (click)="openModal('add', null)" nzType="primary"><i nz-icon nzType="plus" nzTheme="outline"></i>Add new channel</button>
+        <button nz-button (click)="openModal('add', null, null)" nzType="primary"><i nz-icon nzType="plus" nzTheme="outline"></i>Add new channel</button>
       </div>
       <div class="pull-right">
         <nz-input-group [nzSuffix]="suffixIconSearch">
@@ -37,22 +37,22 @@
           </tr>
         </thead>
         <tbody>
-          <ng-template ngFor let-data [ngForOf]="dynamicTable.data">
+          <ng-template ngFor let-data [ngForOf]="dynamicTable.data" let-index="index">
             <tr>
-              <td>{{ data.id }}</td>
-              <td>{{ data.channel }}</td>
-              <td>{{ data.email }}</td>
-              <td>{{ data.view }}</td>
-              <td>{{ data.follower }}</td>
-              <td>{{ data.video }}</td>
-              <td><nz-tag [nzColor]="data.net == 'ON' ? '#00a65a' : '#e51313'">{{ data.net }}</nz-tag></td>
-              <td><nz-tag [nzColor]="data.status == 'ON' ? '#00a65a' : '#e51313'">{{ data.status }}</nz-tag></td>
+              <td><span>{{ index + 1 }}</span></td>
+              <td><span *ngIf="data.username">{{ data.username }}</span></td>
+              <td><span *ngIf="data.channel_email">{{ data.channel_email }}</span></td>
+              <td><span *ngIf="data.channel_views">{{ data.channel_views }}</span></td>
+              <td><span *ngIf="data.channel_followers">{{ data.channel_followers }}</span></td>
+              <td><span *ngIf="data.channel_videos">{{ data.channel_videos }}</span></td>
+              <td><span><nz-switch [(ngModel)]="data.network"></nz-switch></span></td>
+              <td><span><nz-switch [(ngModel)]="data.status"></nz-switch></span></td>
               <td>
                 <a href="#"><nz-tag [nzColor]="'#00c0ef'">Update</nz-tag></a>
                 <nz-divider nzType="vertical"></nz-divider>
-                <a (click)="openModal('edit', data.id)"><nz-tag [nzColor]="'#00a65a'">Edit</nz-tag></a>
+                <a (click)="openModal('edit', data.id, data.username)"><nz-tag [nzColor]="'#00a65a'">Edit</nz-tag></a>
                 <nz-divider nzType="vertical"></nz-divider>
-                <a href="#"><nz-tag [nzColor]="'#e51313'">Delete</nz-tag></a>
+                <a (click)="deleteChannel(data)"><nz-tag [nzColor]="'#e51313'">Delete</nz-tag></a>
               </td>
             </tr>
           </ng-template>

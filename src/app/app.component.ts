@@ -5,6 +5,7 @@ import { filter } from 'rxjs/operators';
 import { NzModalService } from 'ng-zorro-antd';
 
 import { UserService } from '~/shared/shared.module';
+import { LoopBackConfig, CategoryApi } from './shared/sdk-build';
 
 @Component({
   selector: 'app-root,[app-root]',
@@ -36,7 +37,7 @@ export class AppComponent {
 
   menu = [
     {
-      title: 'My panel',
+      title: 'Account',
       icon: 'user',
       children: [
         {
@@ -54,12 +55,13 @@ export class AppComponent {
       icon: 'tool',
       children: [
         { title: 'Vip tool',
+          icon: 'star',
           children: [
-            { title: 'Advance Search', routerLink: '/tool/vip/search' },
-            { title: 'Upload Videos', routerLink: '/tool/vip/upload' },
+            { title: 'Advance Search', icon: 'search', routerLink: '/tool/advance-search' },
+            { title: 'Upload Videos', icon: 'upload', routerLink: '/tool/upload' },
           ]
         },
-        { title: 'User Management', routerLink: '/system/user' }
+        { title: 'Free tool', routerLink: '/system/user' }
       ]
     },
     {
@@ -76,14 +78,14 @@ export class AppComponent {
         }
       ]
     },
-    {
-      title: 'System settings',
-      icon: 'setting',
-      children: [
-        { title: 'Role management', routerLink: '/system/role' },
-        { title: 'User Management', routerLink: '/system/user' }
-      ]
-    },
+    // {
+    //   title: 'System settings',
+    //   icon: 'setting',
+    //   children: [
+    //     { title: 'Role management', routerLink: '/system/role' },
+    //     { title: 'User Management', routerLink: '/system/user' }
+    //   ]
+    // },
     {
       title: 'Exception page',
       icon: 'warning',
@@ -101,17 +103,32 @@ export class AppComponent {
     }
   ];
 
-  constructor(breakpointObserver: BreakpointObserver, router: Router, public user: UserService, private modal: NzModalService) {
-    breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe(result => {
-      this.layout.siderMode = result.matches ? 'over' : 'side';
-      this.layout.collapsed = result.matches;
-    });
+  constructor(
+    breakpointObserver: BreakpointObserver,
+    router: Router,
+    public user: UserService,
+    private modal: NzModalService,
+    private categoryApi: CategoryApi
+    ) {
+      breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe(result => {
+        this.layout.siderMode = result.matches ? 'over' : 'side';
+        this.layout.collapsed = result.matches;
+      });
 
-    router.events.pipe(filter(event => event instanceof ActivationStart)).subscribe(() => {
-      if (this.layout.siderMode == 'over') {
-        this.layout.collapsed = true;
-      }
-    });
+      router.events.pipe(filter(event => event instanceof ActivationStart)).subscribe(() => {
+        if (this.layout.siderMode == 'over') {
+          this.layout.collapsed = true;
+        }
+      });
+      LoopBackConfig.setBaseURL('https://daily.dev.api.cauca.dev');
+      this.categoryApi.find().subscribe((res) => {
+        console.log('category', res);
+        
+      })
+
+
+      // LoopBackConfig.setApiVersion(environment.apiVersion);
+
   }
 
   logout() {
